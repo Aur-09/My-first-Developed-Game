@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/fighter.gd" id="1_fighter"]
+[ext_resource type="PackedScene" path="res://scenes/characters/character_model.tscn" id="2_model"]
+
+[node name="Fighter" type="Node3D"]
+script = ExtResource("1_fighter")
+
+[node name="CharacterModel" parent="." instance=ExtResource("2_model")]

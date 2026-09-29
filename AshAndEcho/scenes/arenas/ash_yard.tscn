@@ -1,0 +1,167 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_arena"]
+[ext_resource type="PackedScene" path="res://scenes/arenas/tile_grid.tscn" id="2_grid"]
+
+[sub_resource type="BoxMesh" id="Deck"]
+size = Vector3(17.3, 0.7, 10)
+
+[sub_resource type="BoxMesh" id="Rail"]
+size = Vector3(17.3, 0.42, 0.28)
+
+[sub_resource type="BoxMesh" id="SideRail"]
+size = Vector3(0.28, 0.42, 9.8)
+
+[sub_resource type="BoxMesh" id="Pillar"]
+size = Vector3(0.86, 4.1, 0.86)
+
+[sub_resource type="BoxMesh" id="Gantry"]
+size = Vector3(14.5, 0.26, 0.42)
+
+[sub_resource type="BoxMesh" id="ReactorHousing"]
+size = Vector3(1.7, 2.8, 1.5)
+
+[sub_resource type="BoxMesh" id="CoolantCanister"]
+size = Vector3(0.72, 1.9, 0.72)
+
+[sub_resource type="StandardMaterial3D" id="DeckMaterial"]
+albedo_color = Color(0.045, 0.061, 0.076, 1)
+metallic = 0.58
+roughness = 0.76
+
+[sub_resource type="StandardMaterial3D" id="SteelMaterial"]
+albedo_color = Color(0.12, 0.17, 0.20, 1)
+metallic = 0.66
+roughness = 0.56
+
+[sub_resource type="StandardMaterial3D" id="DarkSteel"]
+albedo_color = Color(0.035, 0.052, 0.061, 1)
+metallic = 0.74
+roughness = 0.63
+
+[sub_resource type="StandardMaterial3D" id="AmberMaterial"]
+shading_mode = 0
+albedo_color = Color(0.92, 0.37, 0.12, 1)
+emission_enabled = true
+emission = Color(0.67, 0.15, 0.03, 1)
+emission_energy_multiplier = 1.4
+
+[sub_resource type="StandardMaterial3D" id="GreenSignal"]
+shading_mode = 0
+albedo_color = Color(0.13, 0.72, 0.43, 1)
+emission_enabled = true
+emission = Color(0.05, 0.48, 0.23, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="StandardMaterial3D" id="RedSignal"]
+shading_mode = 0
+albedo_color = Color(0.96, 0.28, 0.23, 1)
+emission_enabled = true
+emission = Color(0.68, 0.06, 0.04, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="Environment" id="AshYardEnvironment"]
+background_mode = 1
+background_color = Color(0.018, 0.025, 0.04, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.4, 0.47, 0.54, 1)
+ambient_light_energy = 0.95
+tonemap_mode = 2
+tonemap_exposure = 0.9
+glow_enabled = true
+glow_intensity = 0.32
+glow_bloom = 0.08
+
+[node name="AshYard" type="Node3D"]
+script = ExtResource("1_arena")
+stage_environment = SubResource("AshYardEnvironment")
+
+[node name="StageWorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("AshYardEnvironment")
+
+[node name="AmberWorkLight" type="OmniLight3D" parent="."]
+position = Vector3(0, 3.8, -3.8)
+light_color = Color(0.91, 0.48, 0.27, 1)
+light_energy = 1.3
+omni_range = 10.0
+shadow_enabled = true
+
+[node name="TileGrid" parent="." instance=ExtResource("2_grid")]
+
+[node name="FixedDeck" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.43, 0)
+mesh = SubResource("Deck")
+material_override = SubResource("DeckMaterial")
+
+[node name="NorthRail" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.04, -4.92)
+mesh = SubResource("Rail")
+material_override = SubResource("SteelMaterial")
+
+[node name="SouthRail" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.04, 4.92)
+mesh = SubResource("Rail")
+material_override = SubResource("SteelMaterial")
+
+[node name="WestRail" type="MeshInstance3D" parent="."]
+position = Vector3(-8.5, -0.04, 0)
+mesh = SubResource("SideRail")
+material_override = SubResource("SteelMaterial")
+
+[node name="EastRail" type="MeshInstance3D" parent="."]
+position = Vector3(8.5, -0.04, 0)
+mesh = SubResource("SideRail")
+material_override = SubResource("SteelMaterial")
+
+[node name="WestSupport" type="MeshInstance3D" parent="."]
+position = Vector3(-8.1, 1.66, -4.9)
+mesh = SubResource("Pillar")
+material_override = SubResource("DarkSteel")
+
+[node name="EastSupport" type="MeshInstance3D" parent="."]
+position = Vector3(8.1, 1.66, -4.9)
+mesh = SubResource("Pillar")
+material_override = SubResource("DarkSteel")
+
+[node name="RearGantry" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.72, -4.85)
+mesh = SubResource("Gantry")
+material_override = SubResource("DarkSteel")
+
+[node name="WestReactor" type="MeshInstance3D" parent="."]
+position = Vector3(-6.5, 1.42, -3.8)
+mesh = SubResource("ReactorHousing")
+material_override = SubResource("DarkSteel")
+
+[node name="WestCoolant" type="MeshInstance3D" parent="."]
+position = Vector3(-6.5, 1.44, -2.88)
+mesh = SubResource("CoolantCanister")
+material_override = SubResource("SteelMaterial")
+
+[node name="WestReactorLight" type="MeshInstance3D" parent="."]
+position = Vector3(-6.5, 1.05, -2.04)
+mesh = SubResource("Rail")
+material_override = SubResource("AmberMaterial")
+scale = Vector3(0.07, 0.04, 0.12)
+
+[node name="EastReactor" type="MeshInstance3D" parent="."]
+position = Vector3(6.5, 1.42, -3.8)
+mesh = SubResource("ReactorHousing")
+material_override = SubResource("DarkSteel")
+
+[node name="EastCoolant" type="MeshInstance3D" parent="."]
+position = Vector3(6.5, 1.44, -2.88)
+mesh = SubResource("CoolantCanister")
+material_override = SubResource("SteelMaterial")
+
+[node name="GreenEdgeLight" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.02, 4.73)
+mesh = SubResource("Rail")
+material_override = SubResource("GreenSignal")
+scale = Vector3(0.55, 0.12, 0.08)
+
+[node name="RedEdgeLight" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.02, -4.73)
+mesh = SubResource("Rail")
+material_override = SubResource("RedSignal")
+scale = Vector3(0.55, 0.12, 0.08)

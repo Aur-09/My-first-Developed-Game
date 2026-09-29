@@ -1,0 +1,19 @@
+AUR09 is a 2v2 knockout fighter with one core twist: the floor is both your weapon and your danger.
+
+Two former best friends, Lurna and Nofia, lead opposing crews. You control Lurna. Your AI ally Iona fights beside you against Nofia and Kest.
+
+Heavy attacks and the Pulse ability crack the arena floor tile by tile. But we guarantee the remaining floor always stays connected — so no player is ever trapped. That's the design principle: pressure without punishment.
+
+Here's the core loop:
+- Move to a safe tile
+- Land strikes to build energy
+- Dash away from warned tiles before they collapse
+- Spend 45 energy on Pulse to break the floor under your enemy
+
+The game ships with two arenas — the industrial Ash Yard and the flooded Floodline — plus exploration scenes in the crew's old home and a burning forest.
+
+We built this in Godot 4, with original systems and original art direction.
+
+The MVP is the collapsing-floor combat loop. The next step is rigged character art — we've already generated the direction.
+
+Thank you.

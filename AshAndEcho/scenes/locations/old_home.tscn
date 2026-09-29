@@ -1,0 +1,230 @@
+[gd_scene load_steps=21 format=3]
+
+[ext_resource type="Script" path="res://scripts/story_location.gd" id="1_location"]
+
+[sub_resource type="BoxMesh" id="RoomFloor"]
+size = Vector3(18, 0.42, 14)
+
+[sub_resource type="BoxMesh" id="SideWall"]
+size = Vector3(0.35, 6.2, 14)
+
+[sub_resource type="BoxMesh" id="BackWall"]
+size = Vector3(18, 6.2, 0.35)
+
+[sub_resource type="BoxMesh" id="CeilingBeam"]
+size = Vector3(18.3, 0.36, 0.5)
+
+[sub_resource type="BoxMesh" id="Rug"]
+size = Vector3(5.6, 0.035, 3.8)
+
+[sub_resource type="BoxMesh" id="TableTop"]
+size = Vector3(3.2, 0.20, 1.7)
+
+[sub_resource type="BoxMesh" id="TableLeg"]
+size = Vector3(0.18, 1.05, 0.18)
+
+[sub_resource type="BoxMesh" id="BenchSeat"]
+size = Vector3(1.9, 0.22, 0.48)
+
+[sub_resource type="BoxMesh" id="HearthBody"]
+size = Vector3(2.1, 1.85, 0.7)
+
+[sub_resource type="BoxMesh" id="HearthOpening"]
+size = Vector3(1.1, 0.9, 0.08)
+
+[sub_resource type="BoxMesh" id="WindowFrame"]
+size = Vector3(2.45, 1.85, 0.16)
+
+[sub_resource type="BoxMesh" id="WindowGlass"]
+size = Vector3(2.0, 1.4, 0.05)
+
+[sub_resource type="BoxMesh" id="Door"]
+size = Vector3(2.3, 4.6, 0.22)
+
+[sub_resource type="BoxMesh" id="Shelf"]
+size = Vector3(3.0, 2.6, 0.38)
+
+[sub_resource type="BoxMesh" id="ShelfBoard"]
+size = Vector3(3.2, 0.12, 0.50)
+
+[sub_resource type="StandardMaterial3D" id="Wood"]
+albedo_color = Color(0.22, 0.12, 0.075, 1)
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="WarmPlaster"]
+albedo_color = Color(0.37, 0.28, 0.18, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="RugMaterial"]
+albedo_color = Color(0.18, 0.22, 0.14, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="WindowLight"]
+shading_mode = 0
+albedo_color = Color(0.87, 0.56, 0.28, 1)
+emission_enabled = true
+emission = Color(0.58, 0.28, 0.08, 1)
+emission_energy_multiplier = 0.6
+
+[sub_resource type="StandardMaterial3D" id="HearthCoal"]
+shading_mode = 0
+albedo_color = Color(1, 0.25, 0.045, 1)
+emission_enabled = true
+emission = Color(1, 0.11, 0.015, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="Environment" id="HouseEnvironment"]
+background_mode = 1
+background_color = Color(0.16, 0.095, 0.055, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72, 0.49, 0.28, 1)
+ambient_light_energy = 0.68
+tonemap_mode = 2
+tonemap_exposure = 0.96
+glow_enabled = true
+glow_intensity = 0.26
+fog_enabled = true
+fog_light_color = Color(0.31, 0.19, 0.105, 1)
+fog_density = 0.004
+
+[node name="OldHome" type="Node3D"]
+script = ExtResource("1_location")
+location_name = "THE OLD HOUSE"
+stage_environment = SubResource("HouseEnvironment")
+
+[node name="StageWorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("HouseEnvironment")
+
+[node name="RoomFloor" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.24, 0)
+mesh = SubResource("RoomFloor")
+material_override = SubResource("Wood")
+
+[node name="WestWall" type="MeshInstance3D" parent="."]
+position = Vector3(-9.15, 2.9, 0)
+mesh = SubResource("SideWall")
+material_override = SubResource("WarmPlaster")
+
+[node name="EastWall" type="MeshInstance3D" parent="."]
+position = Vector3(9.15, 2.9, 0)
+mesh = SubResource("SideWall")
+material_override = SubResource("WarmPlaster")
+
+[node name="BackWall" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.9, -7.15)
+mesh = SubResource("BackWall")
+material_override = SubResource("WarmPlaster")
+
+[node name="BeamNorth" type="MeshInstance3D" parent="."]
+position = Vector3(0, 5.55, -6.65)
+mesh = SubResource("CeilingBeam")
+material_override = SubResource("Wood")
+
+[node name="BeamSouth" type="MeshInstance3D" parent="."]
+position = Vector3(0, 5.55, 5.9)
+mesh = SubResource("CeilingBeam")
+material_override = SubResource("Wood")
+
+[node name="Rug" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.0, 0.5)
+mesh = SubResource("Rug")
+material_override = SubResource("RugMaterial")
+
+[node name="TableTop" type="MeshInstance3D" parent="."]
+position = Vector3(0.2, 1.15, 0.25)
+mesh = SubResource("TableTop")
+material_override = SubResource("Wood")
+
+[node name="TableLegA" type="MeshInstance3D" parent="."]
+position = Vector3(-1.15, 0.58, -0.30)
+mesh = SubResource("TableLeg")
+material_override = SubResource("Wood")
+
+[node name="TableLegB" type="MeshInstance3D" parent="."]
+position = Vector3(1.55, 0.58, -0.30)
+mesh = SubResource("TableLeg")
+material_override = SubResource("Wood")
+
+[node name="TableLegC" type="MeshInstance3D" parent="."]
+position = Vector3(-1.15, 0.58, 0.80)
+mesh = SubResource("TableLeg")
+material_override = SubResource("Wood")
+
+[node name="TableLegD" type="MeshInstance3D" parent="."]
+position = Vector3(1.55, 0.58, 0.80)
+mesh = SubResource("TableLeg")
+material_override = SubResource("Wood")
+
+[node name="BenchSeat" type="MeshInstance3D" parent="."]
+position = Vector3(0.1, 0.52, 1.8)
+mesh = SubResource("BenchSeat")
+material_override = SubResource("Wood")
+
+[node name="Hearth" type="MeshInstance3D" parent="."]
+position = Vector3(-6.2, 0.92, -3.0)
+mesh = SubResource("HearthBody")
+material_override = SubResource("Wood")
+
+[node name="HearthOpening" type="MeshInstance3D" parent="."]
+position = Vector3(-6.2, 0.76, -2.62)
+mesh = SubResource("HearthOpening")
+material_override = SubResource("HearthCoal")
+
+[node name="HearthLight" type="OmniLight3D" parent="."]
+position = Vector3(-6.2, 1.0, -2.1)
+light_color = Color(1, 0.39, 0.13, 1)
+light_energy = 1.3
+omni_range = 8.0
+
+[node name="WestWindowFrame" type="MeshInstance3D" parent="."]
+position = Vector3(-4.4, 3.25, -6.9)
+mesh = SubResource("WindowFrame")
+material_override = SubResource("Wood")
+
+[node name="WestWindowGlass" type="MeshInstance3D" parent="."]
+position = Vector3(-4.4, 3.25, -6.79)
+mesh = SubResource("WindowGlass")
+material_override = SubResource("WindowLight")
+
+[node name="EastWindowFrame" type="MeshInstance3D" parent="."]
+position = Vector3(4.4, 3.25, -6.9)
+mesh = SubResource("WindowFrame")
+material_override = SubResource("Wood")
+
+[node name="EastWindowGlass" type="MeshInstance3D" parent="."]
+position = Vector3(4.4, 3.25, -6.79)
+mesh = SubResource("WindowGlass")
+material_override = SubResource("WindowLight")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.25, -6.85)
+mesh = SubResource("Door")
+material_override = SubResource("Wood")
+
+[node name="DoorLight" type="OmniLight3D" parent="."]
+position = Vector3(0, 2.6, -5.5)
+light_color = Color(0.91, 0.63, 0.35, 1)
+light_energy = 1.1
+omni_range = 6.0
+
+[node name="Bookcase" type="MeshInstance3D" parent="."]
+position = Vector3(6.6, 1.3, -5.8)
+mesh = SubResource("Shelf")
+material_override = SubResource("Wood")
+
+[node name="ShelfUpper" type="MeshInstance3D" parent="."]
+position = Vector3(6.6, 2.05, -5.43)
+mesh = SubResource("ShelfBoard")
+material_override = SubResource("Wood")
+
+[node name="ShelfLower" type="MeshInstance3D" parent="."]
+position = Vector3(6.6, 0.9, -5.43)
+mesh = SubResource("ShelfBoard")
+material_override = SubResource("Wood")
+
+[node name="WarmCeilingLight" type="OmniLight3D" parent="."]
+position = Vector3(0, 5.0, 0)
+light_color = Color(0.87, 0.61, 0.35, 1)
+light_energy = 2.0
+omni_range = 17.0
+shadow_enabled = true

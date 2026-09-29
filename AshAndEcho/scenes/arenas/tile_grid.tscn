@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/arenas/floor_tile.tscn" id="1_tile"]
+
+[node name="TileGrid" type="Node3D"]
+
+[node name="Tile_0_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-7, 0, -3.6)
+
+[node name="Tile_1_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-5, 0, -3.6)
+
+[node name="Tile_2_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-3, 0, -3.6)
+
+[node name="Tile_3_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-1, 0, -3.6)
+
+[node name="Tile_4_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(1, 0, -3.6)
+
+[node name="Tile_5_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(3, 0, -3.6)
+
+[node name="Tile_6_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(5, 0, -3.6)
+
+[node name="Tile_7_0" parent="." instance=ExtResource("1_tile")]
+position = Vector3(7, 0, -3.6)
+
+[node name="Tile_0_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-7, 0, -1.8)
+
+[node name="Tile_1_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-5, 0, -1.8)
+
+[node name="Tile_2_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-3, 0, -1.8)
+
+[node name="Tile_3_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-1, 0, -1.8)
+
+[node name="Tile_4_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(1, 0, -1.8)
+
+[node name="Tile_5_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(3, 0, -1.8)
+
+[node name="Tile_6_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(5, 0, -1.8)
+
+[node name="Tile_7_1" parent="." instance=ExtResource("1_tile")]
+position = Vector3(7, 0, -1.8)
+
+[node name="Tile_0_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-7, 0, 0)
+
+[node name="Tile_1_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-5, 0, 0)
+
+[node name="Tile_2_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-3, 0, 0)
+
+[node name="Tile_3_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-1, 0, 0)
+
+[node name="Tile_4_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(1, 0, 0)
+
+[node name="Tile_5_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(3, 0, 0)
+
+[node name="Tile_6_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(5, 0, 0)
+
+[node name="Tile_7_2" parent="." instance=ExtResource("1_tile")]
+position = Vector3(7, 0, 0)
+
+[node name="Tile_0_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-7, 0, 1.8)
+
+[node name="Tile_1_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-5, 0, 1.8)
+
+[node name="Tile_2_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-3, 0, 1.8)
+
+[node name="Tile_3_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-1, 0, 1.8)
+
+[node name="Tile_4_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(1, 0, 1.8)
+
+[node name="Tile_5_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(3, 0, 1.8)
+
+[node name="Tile_6_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(5, 0, 1.8)
+
+[node name="Tile_7_3" parent="." instance=ExtResource("1_tile")]
+position = Vector3(7, 0, 1.8)
+
+[node name="Tile_0_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-7, 0, 3.6)
+
+[node name="Tile_1_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-5, 0, 3.6)
+
+[node name="Tile_2_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-3, 0, 3.6)
+
+[node name="Tile_3_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(-1, 0, 3.6)
+
+[node name="Tile_4_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(1, 0, 3.6)
+
+[node name="Tile_5_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(3, 0, 3.6)
+
+[node name="Tile_6_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(5, 0, 3.6)
+
+[node name="Tile_7_4" parent="." instance=ExtResource("1_tile")]
+position = Vector3(7, 0, 3.6)

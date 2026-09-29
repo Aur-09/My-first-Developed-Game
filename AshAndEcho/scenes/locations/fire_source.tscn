@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/fire_source.gd" id="1_fire"]
+[ext_resource type="Shader" path="res://scenes/locations/flame_shader.gdshader" id="2_shader"]
+
+[sub_resource type="CylinderMesh" id="OuterCone"]
+top_radius = 0.0
+bottom_radius = 0.48
+height = 1.95
+radial_segments = 11
+
+[sub_resource type="CylinderMesh" id="InnerCone"]
+top_radius = 0.0
+bottom_radius = 0.27
+height = 1.28
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="SideCone"]
+top_radius = 0.0
+bottom_radius = 0.31
+height = 1.12
+radial_segments = 9
+
+[sub_resource type="ShaderMaterial" id="OuterFlameMaterial"]
+shader = ExtResource("2_shader")
+shader_parameter/ember_color = Color(0.83, 0.075, 0.012, 1)
+shader_parameter/core_color = Color(1, 0.48, 0.055, 1)
+shader_parameter/flicker_strength = 0.21
+
+[sub_resource type="ShaderMaterial" id="InnerFlameMaterial"]
+shader = ExtResource("2_shader")
+shader_parameter/ember_color = Color(1, 0.22, 0.018, 1)
+shader_parameter/core_color = Color(1, 0.91, 0.3, 1)
+shader_parameter/flicker_strength = 0.14
+
+[sub_resource type="StandardMaterial3D" id="Charcoal"]
+albedo_color = Color(0.025, 0.024, 0.021, 1)
+metallic = 0.16
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="LogMaterial"]
+albedo_color = Color(0.11, 0.052, 0.028, 1)
+roughness = 0.93
+
+[sub_resource type="SphereMesh" id="Smoke"]
+radius = 0.5
+height = 1.0
+radial_segments = 14
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="SmokeMaterial"]
+transparency = 1
+albedo_color = Color(0.18, 0.18, 0.17, 0.28)
+roughness = 1.0
+
+[sub_resource type="SphereMesh" id="Rock"]
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 6
+
+[node name="PersistentFireSource" type="Node3D"]
+script = ExtResource("1_fire")
+
+[node name="CharredBase" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.12, 0)
+scale = Vector3(0.62, 0.18, 0.48)
+mesh = SubResource("Rock")
+material_override = SubResource("Charcoal")
+
+[node name="LogA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.21, 0.20, 0)
+rotation = Vector3(0, 0, -0.35)
+scale = Vector3(0.14, 0.12, 0.84)
+mesh = SubResource("Rock")
+material_override = SubResource("LogMaterial")
+
+[node name="LogB" type="MeshInstance3D" parent="."]
+position = Vector3(0.16, 0.20, 0.04)
+rotation = Vector3(0, 0, 0.42)
+scale = Vector3(0.14, 0.12, 0.84)
+mesh = SubResource("Rock")
+material_override = SubResource("LogMaterial")
+
+[node name="FireRingStoneA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 0.14, 0.02)
+scale = Vector3(0.26, 0.18, 0.3)
+mesh = SubResource("Rock")
+material_override = SubResource("Charcoal")
+
+[node name="FireRingStoneB" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 0.14, 0.02)
+scale = Vector3(0.26, 0.18, 0.3)
+mesh = SubResource("Rock")
+material_override = SubResource("Charcoal")
+
+[node name="FireRingStoneC" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.14, -0.47)
+scale = Vector3(0.35, 0.18, 0.25)
+mesh = SubResource("Rock")
+material_override = SubResource("Charcoal")
+
+[node name="FireRingStoneD" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.14, 0.48)
+scale = Vector3(0.35, 0.18, 0.25)
+mesh = SubResource("Rock")
+material_override = SubResource("Charcoal")
+
+[node name="OuterFlame" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.83, 0)
+scale = Vector3(1, 1, 0.82)
+mesh = SubResource("OuterCone")
+material_override = SubResource("OuterFlameMaterial")
+
+[node name="InnerFlame" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.64, 0.01)
+scale = Vector3(1, 1, 0.78)
+mesh = SubResource("InnerCone")
+material_override = SubResource("InnerFlameMaterial")
+
+[node name="SideFlame" type="MeshInstance3D" parent="."]
+position = Vector3(0.23, 0.52, 0.06)
+rotation = Vector3(0, 0, -0.3)
+mesh = SubResource("SideCone")
+material_override = SubResource("OuterFlameMaterial")
+
+[node name="SmokeA" type="MeshInstance3D" parent="."]
+position = Vector3(0.05, 2.0, 0)
+scale = Vector3(0.45, 0.65, 0.38)
+mesh = SubResource("Smoke")
+material_override = SubResource("SmokeMaterial")
+
+[node name="SmokeB" type="MeshInstance3D" parent="."]
+position = Vector3(-0.08, 2.55, 0.05)
+scale = Vector3(0.61, 0.78, 0.50)
+mesh = SubResource("Smoke")
+material_override = SubResource("SmokeMaterial")
+
+[node name="FireLight" type="OmniLight3D" parent="."]
+position = Vector3(0, 0.7, 0)
+light_color = Color(1, 0.29, 0.055, 1)
+light_energy = 2.5
+omni_range = 8.0
+shadow_enabled = true

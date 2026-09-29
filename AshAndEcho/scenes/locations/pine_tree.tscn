@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="CylinderMesh" id="Trunk"]
+top_radius = 0.28
+bottom_radius = 0.43
+height = 5.1
+radial_segments = 10
+
+[sub_resource type="CylinderMesh" id="LowerBoughs"]
+top_radius = 0.0
+bottom_radius = 2.0
+height = 3.5
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="MiddleBoughs"]
+top_radius = 0.0
+bottom_radius = 1.65
+height = 3.5
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="UpperBoughs"]
+top_radius = 0.0
+bottom_radius = 1.25
+height = 3.0
+radial_segments = 9
+
+[sub_resource type="StandardMaterial3D" id="Bark"]
+albedo_color = Color(0.16, 0.095, 0.055, 1)
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="Needles"]
+albedo_color = Color(0.075, 0.17, 0.10, 1)
+roughness = 0.94
+
+[node name="PineTree" type="Node3D"]
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.5, 0)
+mesh = SubResource("Trunk")
+material_override = SubResource("Bark")
+
+[node name="LowerBoughs" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.0, 0)
+mesh = SubResource("LowerBoughs")
+material_override = SubResource("Needles")
+
+[node name="MiddleBoughs" type="MeshInstance3D" parent="."]
+position = Vector3(0, 4.6, 0)
+mesh = SubResource("MiddleBoughs")
+material_override = SubResource("Needles")
+
+[node name="UpperBoughs" type="MeshInstance3D" parent="."]
+position = Vector3(0, 6.0, 0)
+mesh = SubResource("UpperBoughs")
+material_override = SubResource("Needles")
